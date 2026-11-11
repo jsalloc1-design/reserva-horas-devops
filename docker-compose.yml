@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    image: reserva-horas-web:1.0.0
+    container_name: reserva-horas-web
+    ports:
+      - "${APP_PORT:-8080}:80"
+    environment:
+      - APP_ENV=${APP_ENV:-desarrollo}
+    restart: unless-stopped

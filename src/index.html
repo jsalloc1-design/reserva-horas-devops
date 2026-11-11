@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Servicio web estático de reserva de horas médicas - Proyecto DevOps">
+  <title>Reserva de Horas Médicas | Centro de Salud Vida Plena</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor">
+      <h1>Centro de Salud Vida Plena</h1>
+      <p>Plataforma de reserva de horas médicas</p>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <section class="estado" aria-label="Estado del servicio">
+      <span class="indicador"></span>
+      <div>
+        <strong>Estado del servicio: Operativo</strong>
+        <p>Versión 1.0.0 · Entorno: desarrollo local (Docker + Nginx) · Puerto 8080</p>
+      </div>
+    </section>
+
+    <div class="grilla">
+      <section class="tarjeta">
+        <h2>Reservar hora médica</h2>
+        <p class="aviso">Formulario de demostración: los datos no se envían ni se almacenan.</p>
+        <form id="form-reserva">
+          <label for="nombre">Nombre del paciente</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Paciente de prueba" required>
+
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" placeholder="paciente@ejemplo.cl" required>
+
+          <label for="especialidad">Especialidad</label>
+          <select id="especialidad" name="especialidad" required>
+            <option value="">Seleccione una especialidad</option>
+            <option>Medicina general</option>
+            <option>Pediatría</option>
+            <option>Ginecología</option>
+            <option>Traumatología</option>
+            <option>Dermatología</option>
+          </select>
+
+          <div class="fila">
+            <div>
+              <label for="fecha">Fecha</label>
+              <input type="date" id="fecha" name="fecha" required>
+            </div>
+            <div>
+              <label for="hora">Hora</label>
+              <select id="hora" name="hora" required>
+                <option value="">--:--</option>
+                <option>08:30</option>
+                <option>09:30</option>
+                <option>10:30</option>
+                <option>11:30</option>
+                <option>15:00</option>
+                <option>16:00</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="motivo">Motivo de consulta (opcional)</label>
+          <textarea id="motivo" name="motivo" rows="3" placeholder="Describa brevemente el motivo"></textarea>
+
+          <button type="submit">Solicitar reserva</button>
+          <p id="mensaje" class="mensaje" role="status"></p>
+        </form>
+      </section>
+
+      <aside class="tarjeta">
+        <h2>Datos generales de atención</h2>
+        <ul class="datos">
+          <li><strong>Horario:</strong> lunes a viernes, 08:00 a 18:00 h</li>
+          <li><strong>Sábados:</strong> 09:00 a 13:00 h</li>
+          <li><strong>Dirección:</strong> Av. Ejemplo 1234, Santiago</li>
+          <li><strong>Mesa de ayuda:</strong> +56 2 0000 0000</li>
+          <li><strong>Recomendación:</strong> llegar 15 minutos antes de la hora reservada.</li>
+        </ul>
+        <h3>Información técnica</h3>
+        <ul class="datos">
+          <li>Servidor web: Nginx (imagen nginx:alpine)</li>
+          <li>Orquestación local: Docker Compose</li>
+          <li>Sin API ni base de datos</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <p>Proyecto académico DevOps · Datos ficticios · Sin información personal real</p>
+  </footer>
+
+  <script>
+    // Simulación: evita el envío real del formulario y no almacena datos.
+    document.getElementById('form-reserva').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var esp = document.getElementById('especialidad').value;
+      var fecha = document.getElementById('fecha').value;
+      var hora = document.getElementById('hora').value;
+      document.getElementById('mensaje').textContent =
+        'Reserva simulada: ' + esp + ' el ' + fecha + ' a las ' + hora + ' h. (No se enviaron datos)';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
