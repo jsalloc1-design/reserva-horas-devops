@@ -1,0 +1,23 @@
+# Variables de entorno con valores reales (nunca versionar)
+.env
+.env.local
+*.env
+
+# Credenciales y claves
+*.pem
+*.key
+secrets/
+
+# Logs y archivos temporales
+*.log
+logs/
+tmp/
+
+# Archivos del sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Archivos comprimidos generados para la entrega
+*.zip
